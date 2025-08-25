@@ -15,14 +15,14 @@ abstract class CustomTextStyle {
     color: Colors.black,
     fontFamily: "Poppins",
   );
-  static final Poppins300Style16 = TextStyle(
-    fontSize: 16,
+  static final Poppins300Style14 = TextStyle(
+    fontSize: 14,
     fontWeight: FontWeight.w300,
     color: AppColors.black,
     fontFamily: "Poppins",
   );
-  static const Poppins500Style24 = TextStyle(
-    fontSize: 24,
+  static const Poppins500Style22 = TextStyle(
+    fontSize: 22,
     fontWeight: FontWeight.w500,
     color: Colors.black,
     fontFamily: "Poppins",

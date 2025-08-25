@@ -10,22 +10,25 @@ class OnBordingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ListView(
-          children: [
-            const SizedBox(height: 40),
-            const Align(
-              alignment: Alignment.topRight,
-              child: CustomTextButton(
-                text: "Skip",
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: ListView(
+            children: [
+              const SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.topRight,
+                child: CustomTextButton(
+                  text: "Skip",
+                ),
               ),
-            ),
-            OnBordingBody(),
-            const SizedBox(height: 88),
-            const CustomButton(
-              text: 'Next',
-            ),
-            const SizedBox(height: 17),
-          ],
+              OnBordingBody(),
+              const SizedBox(height: 10),
+              const CustomButton(
+                text: 'Next',
+              ),
+              const SizedBox(height: 17),
+            ],
+          ),
         ),
       ),
     );

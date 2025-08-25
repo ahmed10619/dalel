@@ -1,5 +1,6 @@
 import 'package:dalel/core/utils/app_assets.dart';
 import 'package:dalel/core/utils/custom_text_style.dart';
+import 'package:dalel/features/onBording/data/models/on_bording.dart';
 import 'package:dalel/features/onBording/presentation/widgets/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -14,33 +15,44 @@ class OnBordingBody extends StatelessWidget {
       child: PageView.builder(
           physics: const BouncingScrollPhysics(),
           controller: _controller,
-          itemCount: 3,
+          itemCount: onBordingData.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 Container(
-                  height: 250,
-                  width: 300,
-                  decoration: const BoxDecoration(
+                  height: 220,
+                  width: 280,
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(Assets.assetsImagesOnBoarding1),
+                      image: AssetImage(onBordingData[index].image),
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 18,
+                ),
                 CustomSmoothPageIndicator(
                   controller: _controller,
                 ),
-                const Text(
-                  "Explore The history withDalel in a smart way",
-                  style: CustomTextStyle.Poppins500Style24,
+                const SizedBox(
+                  height: 32,
+                ),
+                Text(
+                  onBordingData[index].title,
+                  style: CustomTextStyle.Poppins500Style22,
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(
+                  height: 14,
+                ),
                 Text(
-                  "Using our app’s history libraries you can find many historical periods ",
-                  style: CustomTextStyle.Poppins300Style16,
+                  onBordingData[index].subTitle,
+                  style: CustomTextStyle.Poppins300Style14.copyWith(
+                    color: Colors.black.withOpacity(0.5),
+                  ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   textAlign: TextAlign.center,
