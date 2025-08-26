@@ -1,20 +1,25 @@
-import 'package:dalel/core/utils/app_assets.dart';
 import 'package:dalel/core/utils/custom_text_style.dart';
 import 'package:dalel/features/onBording/data/models/on_bording.dart';
 import 'package:dalel/features/onBording/presentation/widgets/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingBody extends StatelessWidget {
-  OnBordingBody({super.key});
-  final PageController _controller = PageController();
+  const OnBordingBody({
+    super.key,
+    required this.controller,
+    this.onPageChanged,
+  });
+  final PageController controller;
+  final Function(int)? onPageChanged;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 500,
       child: PageView.builder(
+          onPageChanged: onPageChanged,
           physics: const BouncingScrollPhysics(),
-          controller: _controller,
+          controller: controller,
           itemCount: onBordingData.length,
           itemBuilder: (context, index) {
             return Column(
@@ -33,7 +38,7 @@ class OnBordingBody extends StatelessWidget {
                   height: 18,
                 ),
                 CustomSmoothPageIndicator(
-                  controller: _controller,
+                  controller: controller,
                 ),
                 const SizedBox(
                   height: 32,

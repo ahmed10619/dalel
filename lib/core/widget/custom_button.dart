@@ -3,9 +3,17 @@ import 'package:dalel/core/utils/custom_text_style.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text, this.color});
+  const CustomButton({
+    super.key,
+    required this.text,
+    this.color,
+    this.onPressed,
+    this.backGroungColor,
+  });
   final String text;
   final Color? color;
+  final VoidCallback? onPressed;
+  final Color? backGroungColor;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +21,9 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: backGroungColor ?? AppColors.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
