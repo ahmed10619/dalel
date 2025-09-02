@@ -3,6 +3,7 @@ import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/functions/app_functions.dart';
 import 'package:dalel/core/routers/app_routers.dart';
 import 'package:dalel/core/services/service_locator.dart';
+import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/constant.dart';
 // import 'package:dalel/core/utils/constant.dart';
@@ -39,6 +40,7 @@ class CustomGetButton extends StatelessWidget {
               customNavigatorpushReplacement(context, AppRouters().SignInView);
             },
             text: AppStrings.loginNow,
+            color: AppColors.primaryColor,
           ),
         ],
       );

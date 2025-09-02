@@ -1,5 +1,3 @@
-import 'package:dalel/core/widget/custom_button.dart';
-import 'package:dalel/core/widget/custtom_text_gestureDetector.dart';
 import 'package:dalel/features/onBording/data/models/on_bording.dart';
 import 'package:dalel/features/onBording/presentation/widgets/custom_get_button.dart';
 import 'package:dalel/features/onBording/presentation/widgets/custom_onBording.dart';
