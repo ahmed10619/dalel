@@ -1,35 +1,17 @@
-// import 'package:dalel/core/database/cache/cache_helper.dart';
-import 'package:dalel/core/routers/app_routers.dart';
+import 'package:dalel/app/dalel_app.dart';
+import 'package:dalel/core/functions/chech_auth.dart';
 import 'package:dalel/core/services/service_locator.dart';
-import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'core/database/cache/cache_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   seviceSetUp();
+  checkAuthMethod();
   await getIt<CacheHelper>().init();
 
   runApp(const Dalel());
-}
-
-class Dalel extends StatelessWidget {
-  const Dalel({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.offWhite,
-      ),
-      routerConfig: routers,
-    );
-  }
 }

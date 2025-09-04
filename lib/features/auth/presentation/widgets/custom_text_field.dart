@@ -2,14 +2,19 @@ import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/core/utils/custom_text_style.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.text});
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField(
+      {super.key, required this.text, this.onChanged, this.onFieldSubmitted});
   final String text;
+  final Function(String)? onChanged;
+  final Function(String)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 8, left: 8, top: 32),
-      child: TextField(
+      child: TextFormField(
+        onChanged: onChanged,
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
           labelText: text,
           labelStyle: CustomTextStyle.Poppins400Style16.copyWith(
