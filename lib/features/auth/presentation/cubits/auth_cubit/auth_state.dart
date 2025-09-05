@@ -11,3 +11,7 @@ final class SignUpFialurState extends AuthState {
 
   SignUpFialurState({required this.errMsg});
 }
+
+final class TermsAndConditionStete extends AuthState {}
+
+final class ObscurePasswordTextUpdateState extends AuthState {}

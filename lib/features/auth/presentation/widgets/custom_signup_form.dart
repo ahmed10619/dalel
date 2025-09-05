@@ -1,3 +1,4 @@
+import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/widget/custom_button.dart';
 import 'package:dalel/features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
@@ -12,11 +13,12 @@ class CustomSignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var authBloc = BlocProvider.of<AuthCubit>(context);
+    AuthCubit authBloc = BlocProvider.of<AuthCubit>(context);
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
         return Form(
+          key: authBloc.signUpFormKey,
           child: Column(
             children: [
               CustomTextFormField(
@@ -38,6 +40,17 @@ class CustomSignUpForm extends StatelessWidget {
                 },
               ),
               CustomTextFormField(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    authBloc.obscurePasswordText();
+                  },
+                  icon: Icon(
+                    authBloc.obscurePasswordTextValue == true
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                  ),
+                ),
+                obscureText: authBloc.obscurePasswordTextValue,
                 text: AppStrings.password,
                 onChanged: (password) {
                   authBloc.password = password;
@@ -46,9 +59,16 @@ class CustomSignUpForm extends StatelessWidget {
               const CustomAgreeText(),
               const SizedBox(height: 88),
               CustomButton(
+                  backGroungColor: authBloc.termaAndCondition == false
+                      ? AppColors.grey
+                      : null,
                   text: AppStrings.signUp,
                   onPressed: () {
-                    authBloc.signUpWithEmailAndPassword();
+                    if (authBloc.termaAndCondition == true) {
+                      if (authBloc.signUpFormKey.currentState!.validate()) {
+                        authBloc.signUpWithEmailAndPassword();
+                      }
+                    }
                   }),
             ],
           ),

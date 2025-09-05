@@ -1,21 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  late String firstName;
-  late String lastName;
-  late String emailAddress;
-  late String password;
+  String? firstName;
+  String? lastName;
+  String? emailAddress;
+  String? password;
+  bool? termaAndCondition = false;
+  GlobalKey<FormState> signUpFormKey = GlobalKey();
+  bool? obscurePasswordTextValue = true;
   signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
+
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
       );
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
@@ -28,5 +32,19 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(SignUpFialurState(errMsg: e.toString()));
     }
+  }
+
+  updateTermsAndConditionCkeck({required newValue}) {
+    termaAndCondition = newValue;
+    emit(TermsAndConditionStete());
+  }
+
+  void obscurePasswordText() {
+    if (obscurePasswordTextValue == true) {
+      obscurePasswordTextValue = false;
+    } else {
+      obscurePasswordTextValue = true;
+    }
+    emit(ObscurePasswordTextUpdateState());
   }
 }
