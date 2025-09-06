@@ -26,7 +26,7 @@ class _SplashViewState extends State<SplashView> {
             false;
     if (onBoardingVisited == true) {
       FirebaseAuth.instance.currentUser == null
-          ? delayedMethod(AppRouters().signUpView)
+          ? delayedMethod(AppRouters().signInView)
           : delayedMethod(AppRouters().homeView);
     } else {
       delayedMethod(AppRouters().onBordingView);

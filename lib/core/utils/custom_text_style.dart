@@ -39,4 +39,10 @@ abstract class CustomTextStyle {
     color: Color(0xff6F6460),
     fontFamily: "Poppins",
   );
+  static const saira700Style32 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    fontFamily: "Saira",
+  );
 }
