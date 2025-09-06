@@ -6,9 +6,13 @@ import 'package:flutter/material.dart';
 
 class RowAlreadyHaveAccountOrNotWidget extends StatelessWidget {
   const RowAlreadyHaveAccountOrNotWidget(
-      {super.key, required this.text, required this.textButton});
+      {super.key,
+      required this.text,
+      required this.textButton,
+      required this.onTap});
   final String text;
   final String textButton;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,7 +26,7 @@ class RowAlreadyHaveAccountOrNotWidget extends StatelessWidget {
           width: 8,
         ),
         CusttomTextGestureDetector(
-          onTap: () {},
+          onTap: onTap,
           text: textButton,
           color: AppColors.grey,
         )

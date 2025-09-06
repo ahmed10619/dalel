@@ -26,7 +26,7 @@ class CustomGetButton extends StatelessWidget {
             onPressed: () {
               getIt<CacheHelper>()
                   .saveData(key: Constant().onBoardingVisited, value: true);
-              customNavigatorpushReplacement(context, AppRouters().SignUpView);
+              customNavigatorpushReplacement(context, AppRouters().signUpView);
             },
             text: AppStrings.createAccount,
           ),
@@ -37,7 +37,7 @@ class CustomGetButton extends StatelessWidget {
             onTap: () {
               getIt<CacheHelper>()
                   .saveData(key: Constant().onBoardingVisited, value: true);
-              customNavigatorpushReplacement(context, AppRouters().SignInView);
+              customNavigatorpushReplacement(context, AppRouters().signInView);
             },
             text: AppStrings.loginNow,
             color: AppColors.primaryColor,

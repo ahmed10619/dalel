@@ -6,6 +6,7 @@ import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/constant.dart';
 // import 'package:dalel/core/utils/constant.dart';
 import 'package:dalel/core/utils/custom_text_style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/database/cache/cache_helper.dart';
@@ -24,7 +25,9 @@ class _SplashViewState extends State<SplashView> {
         getIt<CacheHelper>().getData(key: Constant().onBoardingVisited) ??
             false;
     if (onBoardingVisited == true) {
-      delayedMethod(AppRouters().SignInView);
+      FirebaseAuth.instance.currentUser == null
+          ? delayedMethod(AppRouters().signUpView)
+          : delayedMethod(AppRouters().homeView);
     } else {
       delayedMethod(AppRouters().onBordingView);
     }
