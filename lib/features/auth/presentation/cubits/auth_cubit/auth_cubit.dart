@@ -23,12 +23,15 @@ class AuthCubit extends Cubit<AuthState> {
         password: password!,
       );
       emit(SignUpSuccessState());
+      vertiyEmail();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         emit(SignUpFialurState(errMsg: 'The password provided is too weak.'));
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFialurState(
             errMsg: 'The account already exists for that email.'));
+      } else if (e.code == 'invalid-email') {
+        emit(SignUpFialurState(errMsg: 'The email is invalid.'));
       }
     } catch (e) {
       emit(SignUpFialurState(errMsg: e.toString()));
@@ -61,9 +64,15 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'wrong-password') {
         emit(SignInFialurState(
             errMsg: 'Wrong password provided for that user.'));
+      } else {
+        emit(SignInFialurState(errMsg: 'There Was Wrong In Email Or Password'));
       }
     } catch (e) {
       emit(SignInFialurState(errMsg: e.toString()));
     }
+  }
+
+  Future<void> vertiyEmail() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 }
