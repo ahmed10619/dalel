@@ -13,6 +13,7 @@ class AuthCubit extends Cubit<AuthState> {
   bool? termaAndCondition = false;
   GlobalKey<FormState> signUpFormKey = GlobalKey();
   GlobalKey<FormState> signInFormKey = GlobalKey();
+  GlobalKey<FormState> forgetPasswordFormKey = GlobalKey();
   bool? obscurePasswordTextValue = true;
   signUpWithEmailAndPassword() async {
     try {
@@ -74,5 +75,15 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> vertiyEmail() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+  }
+
+  resetPasswordWithLink() async {
+    try {
+      emit(ForgetPasswordLoadingState());
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+      emit(ForgetPasswordSuccessState());
+    } on Exception catch (e) {
+      emit(ForgetPasswordFialurState(errMsg: e.toString()));
+    }
   }
 }

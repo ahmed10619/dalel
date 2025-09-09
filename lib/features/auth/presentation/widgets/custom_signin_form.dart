@@ -60,7 +60,10 @@ class CustomSignInForm extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 16),
-              const CustomForgetPassword(),
+              CustomForgetPassword(
+                onTap: () =>
+                    customNavigator(context, AppRouters().forgetPasswordView),
+              ),
               const SizedBox(height: 102),
               state is SignInLoadingState
                   ? Center(

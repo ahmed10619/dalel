@@ -22,6 +22,16 @@ final class SignInFialurState extends AuthState {
   SignInFialurState({required this.errMsg});
 }
 
+final class ForgetPasswordLoadingState extends AuthState {}
+
+final class ForgetPasswordSuccessState extends AuthState {}
+
+final class ForgetPasswordFialurState extends AuthState {
+  final String errMsg;
+
+  ForgetPasswordFialurState({required this.errMsg});
+}
+
 final class TermsAndConditionStete extends AuthState {}
 
 final class ObscurePasswordTextUpdateState extends AuthState {}
