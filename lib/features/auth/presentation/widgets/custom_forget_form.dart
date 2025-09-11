@@ -51,10 +51,10 @@ class CustomForgetPasswordForm extends StatelessWidget {
                       )
                     : CustomButton(
                         text: AppStrings.sendResetPasswordLink,
-                        onPressed: () {
+                        onPressed: () async {
                           if (authBloc.forgetPasswordFormKey.currentState!
                               .validate()) {
-                            authBloc.resetPasswordWithLink();
+                            await authBloc.resetPasswordWithLink();
                           }
                         }),
               ],

@@ -73,9 +73,9 @@ class CustomSignInForm extends StatelessWidget {
                     )
                   : CustomButton(
                       text: AppStrings.signUp,
-                      onPressed: () {
+                      onPressed: () async {
                         if (authBloc.signInFormKey.currentState!.validate()) {
-                          authBloc.signInWithEmailAndPassword();
+                          await authBloc.signInWithEmailAndPassword();
                         }
                       }),
             ],

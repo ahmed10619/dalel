@@ -78,10 +78,10 @@ class CustomSignUpForm extends StatelessWidget {
                           ? AppColors.grey
                           : null,
                       text: AppStrings.signUp,
-                      onPressed: () {
+                      onPressed: () async {
                         if (authBloc.termaAndCondition == true) {
                           if (authBloc.signUpFormKey.currentState!.validate()) {
-                            authBloc.signUpWithEmailAndPassword();
+                            await authBloc.signUpWithEmailAndPassword();
                           }
                         }
                       }),
