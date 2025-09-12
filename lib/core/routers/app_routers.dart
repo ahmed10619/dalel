@@ -3,6 +3,7 @@ import 'package:dalel/features/auth/presentation/views/forget_password_view.dart
 import 'package:dalel/features/auth/presentation/views/sign_in_view.dart';
 import 'package:dalel/features/auth/presentation/views/sign_up_view.dart';
 import 'package:dalel/features/home/presentation/views/home_view.dart';
+import 'package:dalel/features/home/presentation/widgets/navigation_bar.dart';
 import 'package:dalel/features/onBording/presentation/views/onBording_view.dart';
 import 'package:dalel/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ class AppRouters {
   final String signUpView = "/signUpView";
   final String forgetPasswordView = "/forgetPasswordView";
   final String homeView = "/homeView";
+  final String customNavigationButtonBar = "/customNavigationButtonBar";
 }
 
 final GoRouter routers = GoRouter(
@@ -46,6 +48,10 @@ final GoRouter routers = GoRouter(
         create: (context) => AuthCubit(),
         child: const ForgetPasswordView(),
       ),
+    ),
+    GoRoute(
+      path: AppRouters().customNavigationButtonBar,
+      builder: (context, state) => const CustomNavigationButtonBar(),
     ),
     GoRoute(
       path: AppRouters().homeView,
